@@ -1,10 +1,11 @@
 import Posts from './Posts';
 import { connect } from 'react-redux';
-import createPostAC from '../store/postsReducer';
+import createPostAC from '../../store/postsReducer';
 
 const mapStateToProps = (store) => {
   return {
     posts: store.posts,
+    users: store.users,
   };
 };
 

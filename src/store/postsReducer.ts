@@ -1,9 +1,7 @@
 const CREATE_NEW_POST = 'CREATE_NEW_POST';
 
 type PostType = {
-  author: string;
-  avatar: string;
-  nickname: string;
+  author: number;
   publicationDate: Date | string;
   text: string;
   image: string;
@@ -12,17 +10,14 @@ type PostType = {
   repostAmount: number;
 };
 
-type createPostAC = {
+type createPostACType = {
   type: typeof CREATE_NEW_POST;
   post: PostType;
 };
 
 const initialState: Array<PostType> = [
   {
-    author: 'user name',
-    avatar:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/7/74/Anakin-Jedi.jpg/220px-Anakin-Jedi.jpg',
-    nickname: 'userNickName',
+    author: 0,
     publicationDate: new Date(),
     text: 'Hello, world!',
     image:
@@ -32,10 +27,7 @@ const initialState: Array<PostType> = [
     repostAmount: 1,
   },
   {
-    author: 'userName',
-    avatar:
-      'https://upload.wikimedia.org/wikipedia/en/thumb/7/74/Anakin-Jedi.jpg/220px-Anakin-Jedi.jpg',
-    nickname: 'coolNickName',
+    author: 1,
     publicationDate: new Date(),
     text: 'Hello, everyone!',
     image:
@@ -46,16 +38,16 @@ const initialState: Array<PostType> = [
   },
 ];
 
-const postsReducer = (state = initialState, action: any) => {
+const postsReducer = (state = initialState, action: createPostACType): Array<PostType> => {
   switch (action.type) {
     case CREATE_NEW_POST:
-      return [...state, action.post];
+      return [...state, { ...action.post }];
     default:
       return state;
   }
 };
 
-export const createPostAC = (post: PostType): createPostAC => ({
+export const createPostAC = (post: PostType): createPostACType => ({
   type: CREATE_NEW_POST,
   post,
 });
