@@ -21,12 +21,14 @@ const AddPost = (props) => {
       author: user,
       avatar: 'string',
       nickname: 'string',
-      publicationDate: new Date(),
+      publicationDate: new Date(Date.now()),
       text: text,
       image: image,
       likesAmount: 0,
+      liked: false,
       commentariesAmount: 0,
       repostAmount: 0,
+      reposted: false,
     });
   };
 

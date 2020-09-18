@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { likePostPostAC, repostPostAC } from '../../../store/postsReducer';
 import './post.css';
+import { Favorite, Chat, Share } from '@material-ui/icons';
 
-const Post = ({ name, avatar, nickname, date, content, image }) => {
+const Post = ({
+  index,
+  name,
+  avatar,
+  nickname,
+  date,
+  content,
+  image,
+  liked,
+  likes,
+  comments,
+  reposted,
+  reposts,
+  ...props
+}) => {
+  //const [liked, setLiked] = useState(props.liked);
   return (
     <div className="post_container">
       <div className="post_header">
@@ -11,7 +29,9 @@ const Post = ({ name, avatar, nickname, date, content, image }) => {
             {name}
             <span>@{nickname}</span>
           </div>
-          <div>20 feb 20</div>
+          <div>
+            {date.toLocaleDateString('ru-RU')} {date.getHours()}:{date.getMinutes()}
+          </div>
         </div>
       </div>
       <div className="post_body">
@@ -20,12 +40,40 @@ const Post = ({ name, avatar, nickname, date, content, image }) => {
       </div>
 
       <div className="post_footer">
-        <div>Like</div>
-        <div>Comments</div>
-        <div>Repost</div>
+        <div
+          onClick={() => {
+            props.likePost(index, !liked);
+          }}
+          style={liked ? { color: 'red' } : { color: 'black' }}>
+          <Favorite />
+          {likes + liked}
+        </div>
+        <div>
+          <Chat />
+          {comments}
+        </div>
+        <div
+          onClick={() => {
+            props.repost(index, !reposted);
+          }}
+          style={reposted ? { color: 'blue' } : { color: 'black' }}>
+          <Share />
+          {reposts + reposted}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Post;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    likePost: (index, liked) => {
+      dispatch(likePostPostAC(index, liked));
+    },
+    repost: (index, reposted) => {
+      dispatch(repostPostAC(index, reposted));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Post);
