@@ -1,0 +1,49 @@
+.addUserContainer {
+  display: flex;
+  flex-direction: column;
+  background: #333;
+  width: 500px;
+  height: 500px;
+  margin: 20px auto;
+  padding: 80px 0;
+}
+
+.addUserContainer input {
+  background: none;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 25px;
+  padding: 15px;
+  font-size: 18px;
+  color: #fff;
+  outline: none;
+}
+
+.addUserContainer button {
+  margin: 60px 25px;
+  padding: 15px;
+  font-size: 18px;
+  background: yellowgreen;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.successed {
+  padding: 10px;
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  color: greenyellow;
+  border: 2px solid yellowgreen;
+}
+
+.unsuccessed {
+  padding: 10px;
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  color: red;
+  border: 2px solid red;
+}

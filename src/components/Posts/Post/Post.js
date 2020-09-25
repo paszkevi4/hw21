@@ -4,21 +4,7 @@ import { likePostPostAC, repostPostAC } from '../../../store/postsReducer';
 import './post.css';
 import { Favorite, Chat, Share } from '@material-ui/icons';
 
-const Post = ({
-  index,
-  name,
-  avatar,
-  nickname,
-  date,
-  content,
-  image,
-  liked,
-  likes,
-  comments,
-  reposted,
-  reposts,
-  ...props
-}) => {
+const Post = ({ index, name, avatar, nickname, content, image, ...props }) => {
   //const [liked, setLiked] = useState(props.liked);
   return (
     <div className="post_container">
@@ -27,11 +13,11 @@ const Post = ({
         <div className="post_header__name">
           <div>
             {name}
-            <span>@{nickname}</span>
+            <span>{nickname}</span>
           </div>
-          <div>
+          {/* <div>
             {date.toLocaleDateString('ru-RU')} {date.getHours()}:{date.getMinutes()}
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="post_body">
@@ -39,7 +25,7 @@ const Post = ({
         {image && <img src={image} alt={image} />}
       </div>
 
-      <div className="post_footer">
+      {/* <div className="post_footer">
         <div
           onClick={() => {
             props.likePost(index, !liked);
@@ -60,20 +46,20 @@ const Post = ({
           <Share />
           {reposts + reposted}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    likePost: (index, liked) => {
-      dispatch(likePostPostAC(index, liked));
-    },
-    repost: (index, reposted) => {
-      dispatch(repostPostAC(index, reposted));
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     likePost: (index, liked) => {
+//       dispatch(likePostPostAC(index, liked));
+//     },
+//     repost: (index, reposted) => {
+//       dispatch(repostPostAC(index, reposted));
+//     },
+//   };
+// };
 
-export default connect(null, mapDispatchToProps)(Post);
+export default connect(null, null)(Post);

@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import postsReducer from './postsReducer';
 import usersReducer from './usersReducer';
@@ -8,7 +9,7 @@ let reducers = combineReducers({
   users: usersReducer,
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunk));
 
 window.store = store;
 

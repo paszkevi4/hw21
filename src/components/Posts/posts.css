@@ -1,0 +1,9 @@
+.posts_container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.posts_column {
+  display: flex;
+  flex-direction: column-reverse;
+}

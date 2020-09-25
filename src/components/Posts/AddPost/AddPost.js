@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './addpost.css';
 
 const AddPost = (props) => {
-  let [user, setUser] = useState(0);
+  let [user, setUser] = useState(1);
   let [text, setText] = useState('');
   let [image, setImageUrl] = useState('');
 
@@ -18,17 +18,9 @@ const AddPost = (props) => {
     setText('');
     setImageUrl('');
     props.createNewPost({
-      author: user,
-      avatar: 'string',
-      nickname: 'string',
-      publicationDate: new Date(Date.now()),
-      text: text,
+      userId: user,
+      content: text,
       image: image,
-      likesAmount: 0,
-      liked: false,
-      commentariesAmount: 0,
-      repostAmount: 0,
-      reposted: false,
     });
   };
 

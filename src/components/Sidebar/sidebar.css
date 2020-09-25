@@ -1,0 +1,20 @@
+sidebar {
+  grid-column: 1/2;
+  background: #000;
+  margin: 3vh;
+  height: 94vh;
+  position: sticky;
+  top: 3vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  box-sizing: border-box;
+}
+
+sidebar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 20px;
+}

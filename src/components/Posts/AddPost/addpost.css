@@ -12,14 +12,16 @@
   grid-column: 1/2;
   margin: 15px;
   height: 70px;
+  width: 70px;
   position: relative;
   cursor: pointer;
 }
 
 .addpost_avatar img {
   width: 100%;
+  height: 100%;
   border-radius: 50%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .addpost_avatar span {
   display: none;
