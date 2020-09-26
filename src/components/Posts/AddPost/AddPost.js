@@ -15,19 +15,24 @@ const AddPost = (props) => {
   };
 
   const submitForm = () => {
+    props.api.createTweet({
+      userId: user + 1,
+      content: text,
+      image,
+    });
+    props.createNewPost({
+      userId: user + 1,
+      content: text,
+      image,
+    });
     setText('');
     setImageUrl('');
-    props.createNewPost({
-      userId: user,
-      content: text,
-      image: image,
-    });
   };
 
   return (
     <div className="addpost_container">
       <div onClick={changeUser} className="addpost_avatar">
-        <img src={props.users[user].avatar} />
+        <img src={props.users[user].avatar} alt="avatar" />
         <span>swap user</span>
       </div>
       <textarea

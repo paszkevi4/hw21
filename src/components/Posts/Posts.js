@@ -17,7 +17,7 @@ const Posts = ({ posts, users }) => {
               avatar={user.avatar}
               nickname={user.username}
               date={post.publicationDate}
-              content={post.text}
+              content={post.content}
               image={post.image}
               liked={post.liked}
               likes={post.likesAmount}
