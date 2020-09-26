@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://domer.tech:9999/',
+  baseURL: ' https://cors-anywhere.herokuapp.com/http://domer.tech:9999/',
 });
 
 export const usersAPI = {
