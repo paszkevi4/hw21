@@ -12,7 +12,7 @@ type UserType = {
 
 type setUserACType = {
   type: typeof SET_USERS;
-  users: any;
+  users: Array<UserType>;
 };
 
 const initialState: Array<UserType> = [
@@ -40,7 +40,7 @@ const usersReducer = (state = initialState, action: any) => {
   }
 };
 
-export const setUsersAC = (users: any): setUserACType => ({
+export const setUsersAC = (users: Array<UserType>): setUserACType => ({
   users,
   type: SET_USERS,
 });
@@ -48,7 +48,6 @@ export const setUsersAC = (users: any): setUserACType => ({
 export const fetchUsers = () => {
   return (dispatch: Dispatch<setUserACType>) => {
     usersAPI.getUsers().then((data) => {
-      console.log(data.data);
       dispatch(setUsersAC(data.data));
     });
   };
@@ -56,9 +55,7 @@ export const fetchUsers = () => {
 
 export const setUser = (name: string, username: string, avatar: string, setResult: any) => {
   return (dispatch: any) => {
-    usersAPI.createUser(name, username, avatar, setResult).then((data) => {
-      console.log(data);
-    });
+    usersAPI.createUser(name, username, avatar, setResult);
   };
 };
 

@@ -1,16 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../../store/usersReducer';
 import s from './users.module.css';
 
 const Users = (props) => {
-  useEffect(() => {
-    props.fetchUsers();
-  }, []);
   return (
     <div className={s.users_container}>
       {props.users.map((el, i) => {
-        return <UserCard name={el.name} username={el.username} avatar={el.avatar} />;
+        return <UserCard key={i} name={el.name} username={el.username} avatar={el.avatar} />;
       })}
     </div>
   );
@@ -32,4 +28,4 @@ const mapStateToProps = (store) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchUsers })(Users);
+export default connect(mapStateToProps, null)(Users);
